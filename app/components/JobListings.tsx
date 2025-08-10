@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { JobApiResponse, JobListing, JobSearchParams } from "../types";
 import JobListingCard from "./JobListingCard";
 import Pagination from "./Pagination";
+import { optimizeSearchQuery } from "../lib/searchEnhancer";
 
 interface JobListingsProps {
   searchParams: JobSearchParams;
@@ -122,7 +123,16 @@ export default function JobListings({
           {totalJobs.toLocaleString()} Jobs Found
         </h2>
         <div className="text-gray-600 dark:text-gray-400">
-          {searchParams.title && <span>"{searchParams.title}"</span>}{" "}
+          {searchParams.title && (
+            <div>
+              <span>"{searchParams.title}"</span>
+              {searchParams.title && optimizeSearchQuery(searchParams.title) !== searchParams.title && (
+                <div className="text-sm text-blue-600 dark:text-blue-400 mt-1">
+                  Enhanced search: "{optimizeSearchQuery(searchParams.title)}"
+                </div>
+              )}
+            </div>
+          )}{" "}
           {searchParams.location && <span>in {searchParams.location}</span>}
           {searchParams.job_type && (
             <span className="ml-2">
