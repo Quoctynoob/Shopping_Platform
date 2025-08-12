@@ -64,3 +64,5 @@ docs/development/
 
 # logs
 *.log
+
+/lib/generated/prisma
