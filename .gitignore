@@ -40,3 +40,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python virtual environment
+/venv
+__pycache__/
+*.py[cod]
+*$py.class
+
+# development planning files
+TRANSFORMATION_PLAN.md
+todo-list.md
+planning/
+docs/development/
+
+# database files
+/prisma/migrations/
+*.db
+*.sqlite
+
+# IDE files
+.vscode/
+.idea/
+
+# logs
+*.log
